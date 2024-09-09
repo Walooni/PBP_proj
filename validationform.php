@@ -55,9 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     
-    if (isset($_POST["perguruan_tinggi"])) {
+    if (empty($_POST["perguruan_tinggi"])) {
+        $errors['perguruan_tinggi'] = "Perguruan Tinggi is required.";
+    } elseif (isset($_POST["perguruan_tinggi"])){
         $perguruan_tinggi = sanitize_input($_POST["perguruan_tinggi"]);
-    }
+    }
   
     if (empty($_POST["program_studi"])) {
         $errors['program_studi'] = "Program Studi is required.";
